@@ -24,7 +24,7 @@ namespace QLNhaTro
 
         private void buttonXoa_Click(object sender, EventArgs e)
         {
-            textHoTen = "";
+            
 
         }
     }
