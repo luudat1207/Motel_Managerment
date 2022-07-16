@@ -63,3 +63,4 @@ C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\bin\Debug\ne
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.csproj.CopyComplete
+C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormChuNha.resources

@@ -48,15 +48,15 @@ namespace QLNhaTro.Models
 
                 entity.Property(e => e.DiaChi)
                     .HasMaxLength(255)
-                    .HasColumnName("Dia Chi");
+                    .HasColumnName("DiaChi");
 
                 entity.Property(e => e.GhiChu)
                     .HasMaxLength(255)
-                    .HasColumnName("Ghi Chu");
+                    .HasColumnName("GhiChu");
 
                 entity.Property(e => e.HoTen)
                     .HasMaxLength(50)
-                    .HasColumnName("Ho Ten");
+                    .HasColumnName("HoTen");
 
                 entity.Property(e => e.Idcn).HasColumnName("IDCN");
 

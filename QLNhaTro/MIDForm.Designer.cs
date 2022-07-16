@@ -66,7 +66,7 @@
             // kếtThúcToolStripMenuItem
             // 
             this.kếtThúcToolStripMenuItem.Name = "kếtThúcToolStripMenuItem";
-            this.kếtThúcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.kếtThúcToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.kếtThúcToolStripMenuItem.Text = "Kết thúc";
             this.kếtThúcToolStripMenuItem.Click += new System.EventHandler(this.kếtThúcToolStripMenuItem_Click);
             // 
@@ -89,6 +89,7 @@
             this.thôngTinChủNhàToolStripMenuItem.Name = "thôngTinChủNhàToolStripMenuItem";
             this.thôngTinChủNhàToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
             this.thôngTinChủNhàToolStripMenuItem.Text = "Thông Tin Chủ Nhà";
+            this.thôngTinChủNhàToolStripMenuItem.Click += new System.EventHandler(this.thôngTinChủNhàToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -134,7 +135,7 @@
             this.traCưToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1147, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1383, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -224,7 +225,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1147, 609);
+            this.ClientSize = new System.Drawing.Size(1383, 685);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -233,6 +234,7 @@
             this.Name = "MIDForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhà trọ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MIDForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

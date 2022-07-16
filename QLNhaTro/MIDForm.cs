@@ -26,5 +26,12 @@ namespace QLNhaTro
         {
             this.Close();
         }
+
+        private void thôngTinChủNhàToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormChuNha frm = new FormChuNha();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
