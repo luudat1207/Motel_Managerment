@@ -26,6 +26,7 @@ namespace QLNhaTro.Models
         public virtual DbSet<Phongtro> Phongtros { get; set; }
         public virtual DbSet<Thanhtoan> Thanhtoans { get; set; }
         public virtual DbSet<Tinhtrang> Tinhtrangs { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -226,6 +227,22 @@ namespace QLNhaTro.Models
                 entity.Property(e => e.TinhTrang1)
                     .HasMaxLength(50)
                     .HasColumnName("TinhTrang");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Username);
+
+                entity.ToTable("USER");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(50)
+                    .HasColumnName("USERNAME");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("PASSWORD");
             });
 
             OnModelCreatingPartial(modelBuilder);

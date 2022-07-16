@@ -130,3 +130,5 @@ C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNha
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.pdb
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.genruntimeconfig.cache
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\ref\QLNhaTro.dll
+C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormLogin.resources
+C:\Users\Luu Dat\OneDrive - NVC\Desktop\SE1619_Lưu Tiến Đạt_HE150457\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.Properties.Resources.resources

@@ -12,6 +12,8 @@ namespace QLNhaTro
 {
     public partial class MIDForm : Form
     {
+        public bool boolExit = true;
+        public event EventHandler DangXuat;
         public MIDForm()
         {
             InitializeComponent();
@@ -24,7 +26,8 @@ namespace QLNhaTro
 
         private void kếtThúcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (boolExit)
+                Application.Exit();
         }
 
         private void thôngTinChủNhàToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,6 +35,22 @@ namespace QLNhaTro
             FormChuNha frm = new FormChuNha();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //boolExit = false;
+            //this.Close();
+            //FormLogin f = new FormLogin();
+            //f.Show();
+
+            DangXuat(this, new EventArgs());
+        }
+
+        private void MIDForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(boolExit)
+            Application.Exit();
         }
     }
 }
