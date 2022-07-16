@@ -42,23 +42,17 @@ namespace QLNhaTro.Models
 
             modelBuilder.Entity<Chunha>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Idcn);
 
                 entity.ToTable("CHUNHA");
 
-                entity.Property(e => e.DiaChi)
-                    .HasMaxLength(255)
-                    .HasColumnName("DiaChi");
-
-                entity.Property(e => e.GhiChu)
-                    .HasMaxLength(255)
-                    .HasColumnName("GhiChu");
-
-                entity.Property(e => e.HoTen)
-                    .HasMaxLength(50)
-                    .HasColumnName("HoTen");
-
                 entity.Property(e => e.Idcn).HasColumnName("IDCN");
+
+                entity.Property(e => e.DiaChi).HasMaxLength(500);
+
+                entity.Property(e => e.GhiChu).HasMaxLength(500);
+
+                entity.Property(e => e.HoTen).HasMaxLength(50);
 
                 entity.Property(e => e.Sdt)
                     .HasMaxLength(50)
@@ -67,13 +61,27 @@ namespace QLNhaTro.Models
 
             modelBuilder.Entity<Cthoadon>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.Idhd, e.MaDv });
 
                 entity.ToTable("CTHOADON");
 
                 entity.Property(e => e.Idhd).HasColumnName("IDHD");
 
-                entity.Property(e => e.MaDv).HasColumnName("MaDV");
+                entity.Property(e => e.MaDv)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("MaDV");
+
+                entity.HasOne(d => d.IdhdNavigation)
+                    .WithMany(p => p.Cthoadons)
+                    .HasForeignKey(d => d.Idhd)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CTHOADON_HOADON");
+
+                entity.HasOne(d => d.MaDvNavigation)
+                    .WithMany(p => p.Cthoadons)
+                    .HasForeignKey(d => d.MaDv)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CTHOADON_DICHVU");
             });
 
             modelBuilder.Entity<Dichvu>(entity =>
@@ -95,21 +103,26 @@ namespace QLNhaTro.Models
 
             modelBuilder.Entity<Hoadon>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Idhd);
 
                 entity.ToTable("HOADON");
+
+                entity.Property(e => e.Idhd).HasColumnName("IDHD");
 
                 entity.Property(e => e.GhiChu).HasMaxLength(500);
 
                 entity.Property(e => e.Idcn).HasColumnName("IDCN");
-
-                entity.Property(e => e.Idhd).HasColumnName("IDHD");
 
                 entity.Property(e => e.Idtt).HasColumnName("IDTT");
 
                 entity.Property(e => e.NgayLap).HasColumnType("date");
 
                 entity.Property(e => e.SoHopDong).HasMaxLength(50);
+
+                entity.HasOne(d => d.IdttNavigation)
+                    .WithMany(p => p.Hoadons)
+                    .HasForeignKey(d => d.Idtt)
+                    .HasConstraintName("FK_HOADON_THANHTOAN");
             });
 
             modelBuilder.Entity<Hopdong>(entity =>
@@ -133,6 +146,21 @@ namespace QLNhaTro.Models
                 entity.Property(e => e.NgayTra).HasColumnType("date");
 
                 entity.Property(e => e.TuNgay).HasColumnType("date");
+
+                entity.HasOne(d => d.CccdNavigation)
+                    .WithMany(p => p.Hopdongs)
+                    .HasForeignKey(d => d.Cccd)
+                    .HasConstraintName("FK_HOPDONG_KHACHTHUE");
+
+                entity.HasOne(d => d.IdcnNavigation)
+                    .WithMany(p => p.Hopdongs)
+                    .HasForeignKey(d => d.Idcn)
+                    .HasConstraintName("FK_HOPDONG_CHUNHA");
+
+                entity.HasOne(d => d.MaPhongNavigation)
+                    .WithMany(p => p.Hopdongs)
+                    .HasForeignKey(d => d.MaPhong)
+                    .HasConstraintName("FK_HOPDONG_PHONGTRO");
             });
 
             modelBuilder.Entity<Khachthue>(entity =>
@@ -149,9 +177,7 @@ namespace QLNhaTro.Models
 
                 entity.Property(e => e.GhiChu).HasMaxLength(500);
 
-                entity.Property(e => e.HoTen)
-                    .HasMaxLength(50)
-                    .HasColumnName("Ho Ten");
+                entity.Property(e => e.HoTen).HasMaxLength(50);
 
                 entity.Property(e => e.QueQuan).HasMaxLength(500);
 
@@ -164,20 +190,25 @@ namespace QLNhaTro.Models
 
             modelBuilder.Entity<Phongtro>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.MaPhong);
 
                 entity.ToTable("PHONGTRO");
 
-                entity.Property(e => e.GhiChu).HasMaxLength(500);
-
                 entity.Property(e => e.MaPhong).HasMaxLength(50);
 
+                entity.Property(e => e.GhiChu).HasMaxLength(500);
+
                 entity.Property(e => e.ThongTin).HasMaxLength(500);
+
+                entity.HasOne(d => d.MaTinhTrangNavigation)
+                    .WithMany(p => p.Phongtros)
+                    .HasForeignKey(d => d.MaTinhTrang)
+                    .HasConstraintName("FK_PHONGTRO_TINHTRANG");
             });
 
             modelBuilder.Entity<Thanhtoan>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Idtt);
 
                 entity.ToTable("THANHTOAN");
 
@@ -188,12 +219,12 @@ namespace QLNhaTro.Models
 
             modelBuilder.Entity<Tinhtrang>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.MaTinhTrang);
 
                 entity.ToTable("TINHTRANG");
 
                 entity.Property(e => e.TinhTrang1)
-                    .HasMaxLength(500)
+                    .HasMaxLength(50)
                     .HasColumnName("TinhTrang");
             });
 

@@ -124,20 +124,29 @@ namespace QLNhaTro
                 textHoTen.Focus();
                 return;
             }
+            else if (textSoDT.Text == "")
+            {
+                MessageBox.Show("Số điện thoại trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textSoDT.Focus();
+                return;
+            }
+           
             using (var context = new DBNhaTroContext())
             {
+              
+                String hoten = textHoTen.Text;
+                String sdt = textSoDT.Text;
+                String diachi = textDiaChi.Text;
+                String ghichu = textGhiChu.Text;
 
-                //String hoten = textHoTen.Text;
-                //String 
-                //Employee newem = new Employee(name, dob, gt, position, department);
-                //context.Employees.Add(newem);
-                //context.SaveChanges();
-                
-
+                Chunha cn = new Chunha() { HoTen = "sds", Sdt = "43523454", DiaChi = "erwer", GhiChu = "rrwth" };
+                //Chunha cn = new Chunha() { HoTen = hoten, Sdt = sdt , DiaChi = diachi, GhiChu = ghichu};
+                context.Chunhas.Add(cn);
+                context.SaveChanges();
 
             }
-            // dataGridView1.DataSource = employees.ToList();
             loadData();
+           
         }
 
         private void buttonKhongGhi_Click(object sender, EventArgs e)

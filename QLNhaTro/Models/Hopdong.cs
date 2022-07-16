@@ -16,5 +16,9 @@ namespace QLNhaTro.Models
         public DateTime? DuKienTra { get; set; }
         public DateTime? NgayTra { get; set; }
         public bool? DaKetThuc { get; set; }
+
+        public virtual Khachthue CccdNavigation { get; set; }
+        public virtual Chunha IdcnNavigation { get; set; }
+        public virtual Phongtro MaPhongNavigation { get; set; }
     }
 }
