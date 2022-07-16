@@ -27,11 +27,20 @@ namespace QLNhaTro
             loadData();
         }
 
-        
+
 
         public void loadData()
         {
-            dataGridViewChuNha.DataSource = Logics.ChuNhaManager.GetAllChuNha();
+
+            List<Chunha> lstCN = Logics.ChuNhaManager.GetAllChuNha();
+            dataGridViewChuNha.DataSource = lstCN.Select(x => new
+            {
+                x.Idcn,
+                x.HoTen,
+                x.Sdt,
+                x.DiaChi,
+                x.GhiChu
+            }).ToList();
 
 
         }
@@ -52,8 +61,8 @@ namespace QLNhaTro
             buttonXoa.Enabled = open;
 
             buttonGhi.Enabled = !open;
-            buttonKhongGhi.Enabled= !open;
-            
+            buttonKhongGhi.Enabled = !open;
+
 
             textBoxID.ReadOnly = open;
             textHoTen.ReadOnly = open;
@@ -104,21 +113,40 @@ namespace QLNhaTro
 
         private void buttonCapNhat_Click(object sender, EventArgs e)
         {
+            if (textBoxID.Text == "") return;
             ktThem = false;
-            XoaTrang();
             KeyOpen(false);
-            IDcu = Convert.ToInt32(textBoxID.Text);
+            int.TryParse(textBoxID.Text, out IDcu);
             textHoTen.Focus();
 
         }
 
         private void buttonXoa_Click(object sender, EventArgs e)
         {
+            int.TryParse(textBoxID.Text, out IDcu);
+            using (var context = new DBNhaTroContext())
+            {
+                if (textBoxID.Text == "") return;
+                if (MessageBox.Show("Bạn có muốn xóa [" + textHoTen.Text + "] không ?", "Thông báo ",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Chunha chn = context.Chunhas.Where(x => x.Idcn == IDcu).SingleOrDefault();
+                    context.Chunhas.Remove(chn);
+                    MessageBox.Show("Đã xóa thành công ", "Thông báo",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    context.SaveChanges();
+                    XoaTrang();
+                    textBoxID.Text = "";
+                    KeyOpen(true);
+                   
+                }
+            }
+            loadData();
 
         }
         private void buttonGhi_Click(object sender, EventArgs e)
         {
-            if(textHoTen.Text == "")
+            if (textHoTen.Text == "")
             {
                 MessageBox.Show("Họ tên trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textHoTen.Focus();
@@ -130,23 +158,43 @@ namespace QLNhaTro
                 textSoDT.Focus();
                 return;
             }
-           
+
             using (var context = new DBNhaTroContext())
             {
-              
-                String hoten = textHoTen.Text;
-                String sdt = textSoDT.Text;
-                String diachi = textDiaChi.Text;
-                String ghichu = textGhiChu.Text;
 
-                Chunha cn = new Chunha() { HoTen = "sds", Sdt = "43523454", DiaChi = "erwer", GhiChu = "rrwth" };
-                //Chunha cn = new Chunha() { HoTen = hoten, Sdt = sdt , DiaChi = diachi, GhiChu = ghichu};
-                context.Chunhas.Add(cn);
+
+                if (ktThem == true)
+                {
+                    String hoten = textHoTen.Text;
+                    String sdt = textSoDT.Text;
+                    String diachi = textDiaChi.Text;
+                    String ghichu = textGhiChu.Text;
+
+                    Chunha cn = new Chunha() { HoTen = hoten, Sdt = sdt, DiaChi = diachi, GhiChu = ghichu };
+                    context.Chunhas.Add(cn);
+                    MessageBox.Show("Đã thêm thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+
+                if (ktThem == false)
+                {
+                    Chunha chn = context.Chunhas.Where(x => x.Idcn == IDcu).SingleOrDefault();
+
+                    chn.HoTen = textHoTen.Text;
+                    chn.Sdt = textSoDT.Text;
+                    chn.DiaChi = textDiaChi.Text;
+                    chn.GhiChu = textGhiChu.Text;
+
+                    context.Chunhas.Update(chn);
+                    MessageBox.Show("Đã sửa thành công ", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
                 context.SaveChanges();
-
+                KeyOpen(true);
             }
             loadData();
-           
+
         }
 
         private void buttonKhongGhi_Click(object sender, EventArgs e)
@@ -156,10 +204,11 @@ namespace QLNhaTro
                 XoaTrang();
                 KeyOpen(true);
                 dataGridViewChuNha_CellContentClick(sender, vt);
-            }catch (Exception ex) { }
+            }
+            catch (Exception ex) { }
         }
 
-        
+
 
         private void buttonKetThuc_Click(object sender, EventArgs e)
         {
