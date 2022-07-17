@@ -91,9 +91,7 @@ namespace QLNhaTro.Models
 
                 entity.ToTable("DICHVU");
 
-                entity.Property(e => e.MaDv)
-                    .ValueGeneratedNever()
-                    .HasColumnName("MaDV");
+                entity.Property(e => e.MaDv).HasColumnName("MaDV");
 
                 entity.Property(e => e.GhiChu).HasMaxLength(500);
 

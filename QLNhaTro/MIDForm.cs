@@ -59,5 +59,12 @@ namespace QLNhaTro
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void dịchVụChoThuêToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDichVu frm = new FormDichVu();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

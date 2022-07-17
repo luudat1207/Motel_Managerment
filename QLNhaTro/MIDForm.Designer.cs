@@ -140,6 +140,7 @@
             this.dịchVụChoThuêToolStripMenuItem.Name = "dịchVụChoThuêToolStripMenuItem";
             this.dịchVụChoThuêToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
             this.dịchVụChoThuêToolStripMenuItem.Text = "Dịch Vụ Cho Thuê";
+            this.dịchVụChoThuêToolStripMenuItem.Click += new System.EventHandler(this.dịchVụChoThuêToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 

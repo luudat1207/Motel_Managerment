@@ -16,10 +16,5 @@ namespace QLNhaTro.Models
         public string TinhTrang1 { get; set; }
 
         public virtual ICollection<Phongtro> Phongtros { get; set; }
-
-        public Tinhtrang(string tinhTrang1)
-        {
-            TinhTrang1 = tinhTrang1;
-        }
     }
 }
