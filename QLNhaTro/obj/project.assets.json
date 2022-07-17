@@ -6140,11 +6140,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\SE1619_Lưu Tiến Đạt_HE150457\\QLNhaTro\\QLNhaTro\\QLNhaTro.csproj",
+      "projectUniqueName": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\PE PRN211\\QLNhaTro\\QLNhaTro\\QLNhaTro.csproj",
       "projectName": "QLNhaTro",
-      "projectPath": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\SE1619_Lưu Tiến Đạt_HE150457\\QLNhaTro\\QLNhaTro\\QLNhaTro.csproj",
+      "projectPath": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\PE PRN211\\QLNhaTro\\QLNhaTro\\QLNhaTro.csproj",
       "packagesPath": "C:\\Users\\Luu Dat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\SE1619_Lưu Tiến Đạt_HE150457\\QLNhaTro\\QLNhaTro\\obj\\",
+      "outputPath": "C:\\Users\\Luu Dat\\OneDrive - NVC\\Desktop\\PE PRN211\\QLNhaTro\\QLNhaTro\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luu Dat\\AppData\\Roaming\\NuGet\\NuGet.Config",

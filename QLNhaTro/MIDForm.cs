@@ -52,5 +52,12 @@ namespace QLNhaTro
             if(boolExit)
             Application.Exit();
         }
+
+        private void tìnhTrạngPhòngTrọToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTinhTrangPhongTro frm = new FormTinhTrangPhongTro();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
