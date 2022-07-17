@@ -1,6 +1,6 @@
 ﻿namespace QLNhaTro
 {
-    partial class FormTinhTrangPhongTro
+    partial class FormThanhToanHoaDon
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTinhTrangPhongTro));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThanhToanHoaDon));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.buttonKetThuc = new System.Windows.Forms.Button();
             this.buttonKhongGhi = new System.Windows.Forms.Button();
@@ -41,11 +40,11 @@
             this.buttonThem = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textTinhTrang = new System.Windows.Forms.TextBox();
-            this.dataGridViewTinhTrang = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridViewThanhToan = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTinhTrang)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewThanhToan)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxID
@@ -106,47 +105,39 @@
             resources.ApplyResources(this.textTinhTrang, "textTinhTrang");
             this.textTinhTrang.Name = "textTinhTrang";
             // 
-            // dataGridViewTinhTrang
+            // dataGridViewThanhToan
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTinhTrang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.dataGridViewTinhTrang, "dataGridViewTinhTrang");
-            this.dataGridViewTinhTrang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            resources.ApplyResources(this.dataGridViewThanhToan, "dataGridViewThanhToan");
+            this.dataGridViewThanhToan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Column2});
-            this.dataGridViewTinhTrang.Name = "dataGridViewTinhTrang";
-            this.dataGridViewTinhTrang.RowTemplate.Height = 40;
-            this.dataGridViewTinhTrang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTinhTrang_CellContentClick);
+            this.dataGridViewThanhToan.Name = "dataGridViewThanhToan";
+            this.dataGridViewThanhToan.RowTemplate.Height = 60;
+            this.dataGridViewThanhToan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewThanhToan_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "IDTT";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.ID, "ID");
+            this.ID.Name = "ID";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "LoaiThanhToan";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.Column2, "Column2");
+            this.Column2.Name = "Column2";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "MaTinhTrang";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.ID, "ID");
-            this.ID.Name = "ID";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TinhTrang1";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.Column2, "Column2");
-            this.Column2.Name = "Column2";
-            // 
-            // FormTinhTrangPhongTro
+            // FormThanhToanHoaDon
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,14 +150,14 @@
             this.Controls.Add(this.buttonThem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textTinhTrang);
-            this.Controls.Add(this.dataGridViewTinhTrang);
+            this.Controls.Add(this.dataGridViewThanhToan);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormTinhTrangPhongTro";
-            this.Load += new System.EventHandler(this.FormTinhTrangPhongTro_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTinhTrang)).EndInit();
+            this.Name = "FormThanhToanHoaDon";
+            this.Load += new System.EventHandler(this.FormThanhToanHoaDon_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewThanhToan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,7 +174,7 @@
         private System.Windows.Forms.Button buttonThem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textTinhTrang;
-        private System.Windows.Forms.DataGridView dataGridViewTinhTrang;
+        private System.Windows.Forms.DataGridView dataGridViewThanhToan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

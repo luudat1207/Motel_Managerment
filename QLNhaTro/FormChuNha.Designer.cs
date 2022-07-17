@@ -135,6 +135,7 @@
             // 
             resources.ApplyResources(this.textSoDT, "textSoDT");
             this.textSoDT.Name = "textSoDT";
+            this.textSoDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textSoDT_KeyPress);
             // 
             // textDiaChi
             // 

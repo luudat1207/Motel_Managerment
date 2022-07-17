@@ -66,5 +66,12 @@ namespace QLNhaTro
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void tìnhTrạngThanhToánHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormThanhToanHoaDon frm = new FormThanhToanHoaDon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

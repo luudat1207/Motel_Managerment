@@ -210,6 +210,7 @@
             this.tìnhTrạngThanhToánHóaĐơnToolStripMenuItem.Name = "tìnhTrạngThanhToánHóaĐơnToolStripMenuItem";
             this.tìnhTrạngThanhToánHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.tìnhTrạngThanhToánHóaĐơnToolStripMenuItem.Text = "Tình Trạng Thanh Toán Hóa Đơn";
+            this.tìnhTrạngThanhToánHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.tìnhTrạngThanhToánHóaĐơnToolStripMenuItem_Click);
             // 
             // traCưToolStripMenuItem
             // 

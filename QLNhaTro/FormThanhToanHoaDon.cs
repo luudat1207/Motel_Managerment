@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace QLNhaTro
 {
-    public partial class FormDichVu : Form
+    public partial class FormThanhToanHoaDon : Form
     {
         bool ktThem;
         int IDcu;
         DataGridViewCellEventArgs vt;
-        public FormDichVu()
+        public FormThanhToanHoaDon()
         {
             InitializeComponent();
         }
 
-        private void FormDichVu_Load(object sender, EventArgs e)
+        private void FormThanhToanHoaDon_Load(object sender, EventArgs e)
         {
             KeyOpen(true);
             loadData();
@@ -29,14 +29,11 @@ namespace QLNhaTro
 
         public void loadData()
         {
-
-            List<Dichvu> lstDV = Logics.DichVuManager.GetAllDichVu();
-            dataGridViewDichVu.DataSource = lstDV.Select(x => new
+            List<Thanhtoan> lstTT = Logics.ThanhToanHoaDonManager.GetAllThanhToan();
+            dataGridViewThanhToan.DataSource = lstTT.Select(x => new
             {
-                x.MaDv,
-                x.TenDv,
-                x.SoTien,
-                x.GhiChu
+                x.Idtt,
+                x.LoaiThanhToan
             }).ToList();
 
 
@@ -44,13 +41,12 @@ namespace QLNhaTro
         public void XoaTrang()
         {
             textBoxID.Text = "";
-            textDichVu.Text = "";
-            textGiaTien.Text = "";
-            textGhiChu.Text = "";
+            textTinhTrang.Text = "";
+
         }
         public void KeyOpen(bool open)
         {
-            dataGridViewDichVu.Enabled = open;
+            dataGridViewThanhToan.Enabled = open;
             buttonCapNhat.Enabled = open;
             buttonThem.Enabled = open;
             buttonKetThuc.Enabled = open;
@@ -61,37 +57,35 @@ namespace QLNhaTro
 
 
             textBoxID.ReadOnly = open;
-            textDichVu.ReadOnly = open;
-            textGiaTien.ReadOnly = open;
-            textGhiChu.ReadOnly = open;
+            textTinhTrang.ReadOnly = open;
+
+
         }
 
-        private void dataGridViewDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewThanhToan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            if (dataGridViewDichVu.SelectedCells.Count > 0)
+            if (dataGridViewThanhToan.SelectedCells.Count > 0)
             {
-                int selectedrowindex = dataGridViewDichVu.SelectedCells[0].RowIndex;
+                int selectedrowindex = dataGridViewThanhToan.SelectedCells[0].RowIndex;
 
-                DataGridViewRow selectedRow = dataGridViewDichVu.Rows[selectedrowindex];
+                DataGridViewRow selectedRow = dataGridViewThanhToan.Rows[selectedrowindex];
 
-                string cellvalue = Convert.ToString(selectedRow.Cells["IDDV"].Value);
+                string cellvalue = Convert.ToString(selectedRow.Cells["ID"].Value);
 
                 if (!string.IsNullOrEmpty(cellvalue))
                 {
                     vt = e;
                     using (var context = new DBNhaTroContext())
                     {
-                        int dvID = Convert.ToInt32(cellvalue);
+                        int ttID = Convert.ToInt32(cellvalue);
 
-                        Dichvu dv = context.Dichvus.FirstOrDefault(x => x.MaDv == dvID);
+                        Thanhtoan tt = context.Thanhtoans.FirstOrDefault(x => x.Idtt == ttID);
                         // lay duy nhat 1 employee sao cho so thu tu cua dong bang so ID 
 
-                        textBoxID.Text = dv.MaDv.ToString();
-                        textDichVu.Text = dv.TenDv.ToString();
-                        textGiaTien.Text = dv.SoTien.ToString();
-                        textGhiChu.Text = dv.GhiChu.ToString();
-                        
+                        textBoxID.Text = tt.Idtt.ToString();
+                        textTinhTrang.Text = tt.LoaiThanhToan.ToString();
+
                     }
                 }
             }
@@ -102,7 +96,7 @@ namespace QLNhaTro
             ktThem = true;
             XoaTrang();
             KeyOpen(false);
-            textDichVu.Focus();
+            textTinhTrang.Focus();
         }
 
         private void buttonCapNhat_Click(object sender, EventArgs e)
@@ -111,7 +105,7 @@ namespace QLNhaTro
             ktThem = false;
             KeyOpen(false);
             int.TryParse(textBoxID.Text, out IDcu);
-            textDichVu.Focus();
+            textTinhTrang.Focus();
         }
 
         private void buttonXoa_Click(object sender, EventArgs e)
@@ -120,11 +114,11 @@ namespace QLNhaTro
             using (var context = new DBNhaTroContext())
             {
                 if (textBoxID.Text == "") return;
-                if (MessageBox.Show("Bạn có muốn xóa [" + textDichVu.Text + "] không ?", "Thông báo ",
+                if (MessageBox.Show("Bạn có muốn xóa [" + textTinhTrang.Text + "] không ?", "Thông báo ",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Dichvu dv = context.Dichvus.Where(x => x.MaDv == IDcu).SingleOrDefault();
-                    context.Dichvus.Remove(dv);
+                    Thanhtoan tt = context.Thanhtoans.Where(x => x.Idtt == IDcu).SingleOrDefault();
+                    context.Thanhtoans.Remove(tt);
                     MessageBox.Show("Đã xóa thành công ", "Thông báo",
                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     context.SaveChanges();
@@ -139,18 +133,13 @@ namespace QLNhaTro
 
         private void buttonGhi_Click(object sender, EventArgs e)
         {
-            if (textDichVu.Text == "")
+            if (textTinhTrang.Text == "")
             {
-                MessageBox.Show("Tên dịch vụ trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textDichVu.Focus();
+                MessageBox.Show("Tình trạng trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textTinhTrang.Focus();
                 return;
             }
-            else if (textGiaTien.Text == "")
-            {
-                MessageBox.Show("Giá tiền trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textGiaTien.Focus();
-                return;
-            }
+
 
             using (var context = new DBNhaTroContext())
             {
@@ -158,35 +147,27 @@ namespace QLNhaTro
 
                 if (ktThem == true)
                 {
-                    String tendichvu = textDichVu.Text;
-                    String giatien = textGiaTien.Text;
-                    String ghichu = textGhiChu.Text;
-
-                    Dichvu dv = new Dichvu() { TenDv = tendichvu, SoTien = Convert.ToDouble( giatien),  GhiChu = ghichu };
-                    context.Dichvus.Add(dv);
+                    String tinhtrang = textTinhTrang.Text;
+                    Thanhtoan tt = new Thanhtoan() { LoaiThanhToan = tinhtrang };
+                    context.Thanhtoans.Add(tt);
                     MessageBox.Show("Đã thêm thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
 
                 if (ktThem == false)
                 {
-                    Dichvu dv = context.Dichvus.Where(x => x.MaDv == IDcu).SingleOrDefault();
+                    Thanhtoan tt = context.Thanhtoans.Where(x => x.Idtt == IDcu).SingleOrDefault();
 
-                    dv.TenDv = textDichVu.Text;
-                    dv.SoTien = Convert.ToDouble(textGiaTien.Text);
-                    
-                    dv.GhiChu = textGhiChu.Text;
+                    tt.LoaiThanhToan = textTinhTrang.Text;
 
-                    context.Dichvus.Update(dv);
+                    context.Thanhtoans.Update(tt);
                     MessageBox.Show("Đã sửa thành công ", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 context.SaveChanges();
                 KeyOpen(true);
             }
             loadData();
-
         }
 
         private void buttonKhongGhi_Click(object sender, EventArgs e)
@@ -195,7 +176,7 @@ namespace QLNhaTro
             {
                 XoaTrang();
                 KeyOpen(true);
-                dataGridViewDichVu_CellContentClick(sender, vt);
+                dataGridViewThanhToan_CellContentClick(sender, vt);
             }
             catch (Exception ex) { }
         }
@@ -205,19 +186,6 @@ namespace QLNhaTro
             this.Close();
         }
 
-        private void textGiaTien_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-              (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
+        
     }
 }

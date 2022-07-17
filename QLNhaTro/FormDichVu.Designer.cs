@@ -106,6 +106,7 @@
             // 
             resources.ApplyResources(this.textGiaTien, "textGiaTien");
             this.textGiaTien.Name = "textGiaTien";
+            this.textGiaTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textGiaTien_KeyPress);
             // 
             // textGhiChu
             // 
