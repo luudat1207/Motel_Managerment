@@ -194,6 +194,7 @@
             // 
             resources.ApplyResources(this.textBoxCCCD, "textBoxCCCD");
             this.textBoxCCCD.Name = "textBoxCCCD";
+            this.textBoxCCCD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCCCD_KeyPress);
             // 
             // label5
             // 
@@ -214,6 +215,7 @@
             // 
             resources.ApplyResources(this.textBoxSoDT, "textBoxSoDT");
             this.textBoxSoDT.Name = "textBoxSoDT";
+            this.textBoxSoDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSoDT_KeyPress);
             // 
             // label7
             // 

@@ -385,6 +385,9 @@
   <data name="textBoxCCCD.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 562</value>
   </data>
+  <data name="textBoxCCCD.MaxLength" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
   <data name="textBoxCCCD.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -504,6 +507,9 @@
   </data>
   <data name="textBoxSoDT.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 628</value>
+  </data>
+  <data name="textBoxSoDT.MaxLength" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="textBoxSoDT.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -884,7 +890,7 @@
     <value>9, 19</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1890, 857</value>
+    <value>1890, 878</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 10.2pt</value>

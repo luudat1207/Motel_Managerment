@@ -56,11 +56,11 @@ namespace QLNhaTro
             {
                 using (var context = new DBNhaTroContext())
                 {
-                    khachthues = context.Khachthues.Where(x => 
-                    x.Cccd.Contains(textBoxTimKiem.Text) || 
+                    khachthues = context.Khachthues.Where(x =>
+                    x.Cccd.Contains(textBoxTimKiem.Text) ||
                     x.HoTen.Contains(textBoxTimKiem.Text) ||
                     x.QueQuan.Contains(textBoxTimKiem.Text) ||
-                    x.DiaChi.Contains(textBoxTimKiem.Text) 
+                    x.DiaChi.Contains(textBoxTimKiem.Text)
                     ).OrderBy(x => x.HoTen).ToList();
                 }
             }
@@ -98,7 +98,7 @@ namespace QLNhaTro
             buttonGhi.Enabled = !open;
             buttonKhongGhi.Enabled = !open;
 
-
+            textBoxTimKiem.ReadOnly = open;
             textBoxCCCD.ReadOnly = open;
             textBoxHoTen.ReadOnly = open;
             textBoxSoDT.ReadOnly = open;
@@ -112,7 +112,7 @@ namespace QLNhaTro
         private void dataGridViewKhachThue_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dataGridViewKhachThue.RowCount <= 0) return;
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 vt = e;
                 DataGridViewRow row = dataGridViewKhachThue.Rows[e.RowIndex];
@@ -126,69 +126,179 @@ namespace QLNhaTro
             }
         }
 
-        //private void dataGridViewKhachThue_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-        //    if (dataGridViewKhachThue.SelectedCells.Count > 0)
-        //    {
-        //        int selectedrowindex = dataGridViewKhachThue.SelectedCells[0].RowIndex;
 
-        //        DataGridViewRow selectedRow = dataGridViewKhachThue.Rows[selectedrowindex];
-
-        //        string cellvalue = Convert.ToString(selectedRow.Cells["CCCD"].Value);
-
-        //        if (!string.IsNullOrEmpty(cellvalue))
-        //        {
-        //            vt = e;
-        //            using (var context = new DBNhaTroContext())
-        //            {
-        //                string CCCD = cellvalue;
-
-        //                Khachthue kt = context.Khachthues.FirstOrDefault(x => x.Cccd.Equals(CCCD));
-        //                // lay duy nhat 1 employee sao cho so thu tu cua dong bang so ID 
-
-        //                textBoxCCCD.Text = kt.Cccd.ToString();
-        //                textBoxHoTen.Text = kt.HoTen.ToString();
-        //                textBoxSoDT.Text = kt.Sdt.ToString();
-        //                textBoxDiaChi.Text = kt.DiaChi.ToString();
-        //                textBoxGhiChu.Text = kt.GhiChu.ToString();
-        //                textBoxQueQuan.Text = kt.QueQuan.ToString();
-        //                textBoxThongTinKhac.Text = kt.ThongTinKhac.ToString();
-        //            }
-        //        }
-        //    }
-        //}
 
         private void buttonThem_Click(object sender, EventArgs e)
         {
-
+            ktThem = true;
+            XoaTrang();
+            KeyOpen(false);
+            textBoxHoTen.Focus();
         }
 
         private void buttonCapNhat_Click(object sender, EventArgs e)
         {
-
+            if (textBoxCCCD.Text == "") return;
+            ktThem = false;
+            KeyOpen(false);
+            CCCDcu = textBoxCCCD.Text;
+            textBoxHoTen.Focus();
         }
 
         private void buttonXoa_Click(object sender, EventArgs e)
         {
-
+            CCCDcu = textBoxCCCD.Text;
+            using (var context = new DBNhaTroContext())
+            {
+                if (textBoxCCCD.Text == "") return;
+                if (MessageBox.Show("Bạn có muốn xóa [" + textBoxHoTen.Text + "] không ?", "Thông báo ",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Khachthue kt = context.Khachthues.Where(x => x.Cccd.Equals(CCCDcu)).SingleOrDefault();
+                    context.Khachthues.Remove(kt);
+                    MessageBox.Show("Đã xóa thành công ", "Thông báo",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    context.SaveChanges();
+                    XoaTrang();
+                    KeyOpen(true);
+                }
+            }
+            loadData();
         }
 
         private void buttonGhi_Click(object sender, EventArgs e)
         {
+            if (textBoxCCCD.Text == "")
+            {
+                MessageBox.Show("CCCD trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxCCCD.Focus();
+                return;
+            }
+            else if (textBoxHoTen.Text == "")
+            {
+                MessageBox.Show("Họ tên trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxHoTen.Focus();
+                return;
+            }
+            else if (textBoxSoDT.Text == "")
+            {
+                MessageBox.Show("Số điện thoại trống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxSoDT.Focus();
+                return;
+            }
+            else if (duplicateCCCD() == true)
+            {
+                MessageBox.Show("Trùng CCCD !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxCCCD.Focus();
+                return;
+            }
 
+            using (var context = new DBNhaTroContext())
+            {
+
+
+                if (ktThem == true)
+                {
+                    String cccd = textBoxCCCD.Text;
+                    String hoten = textBoxHoTen.Text;
+                    String sdt = textBoxSoDT.Text;
+                    String quequan = textBoxQueQuan.Text;
+                    String diachi = textBoxDiaChi.Text;
+                    String thongtinkhac = textBoxThongTinKhac.Text;
+                    String ghichu = textBoxGhiChu.Text;
+
+                    Khachthue kt = new Khachthue() { Cccd = cccd, HoTen = hoten, Sdt = sdt, QueQuan = quequan, DiaChi = diachi, GhiChu = ghichu, ThongTinKhac = thongtinkhac };
+                    context.Khachthues.Add(kt);
+                    MessageBox.Show("Đã thêm thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+
+                if (ktThem == false)
+                {
+                    Khachthue kt = context.Khachthues.Where(x => x.Cccd.Equals(CCCDcu)).SingleOrDefault();
+                    kt.Cccd = textBoxCCCD.Text;
+                    kt.HoTen = textBoxHoTen.Text;
+                    kt.Sdt = textBoxSoDT.Text;
+                    kt.QueQuan = textBoxQueQuan.Text;
+                    kt.DiaChi = textBoxDiaChi.Text;
+                    kt.GhiChu = textBoxGhiChu.Text;
+                    kt.ThongTinKhac = textBoxThongTinKhac.Text;
+                    context.Khachthues.Update(kt);
+                    MessageBox.Show("Đã sửa thành công ", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                context.SaveChanges();
+                KeyOpen(true);
+            }
+            loadData();
         }
 
+        public bool duplicateCCCD()
+        {
+            using (var context = new DBNhaTroContext())
+            {
+                var check = context.Khachthues.Where(x => x.Cccd.Equals(textBoxCCCD.Text)).ToList();
+                if (check.Count > 0)
+                {
+                    if(ktThem == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        if(check[0].Cccd.Equals(CCCDcu) == false) 
+                            return true;
+                    }
+                }
+                return false;
+            }
+        }
         private void buttonKhongGhi_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                XoaTrang();
+                KeyOpen(true);
+                dataGridViewKhachThue_CellMouseClick(sender, vt);
+            }
+            catch (Exception ex) { }
         }
 
         private void buttonKetThuc_Click(object sender, EventArgs e)
         {
+            this.Close();
 
         }
 
-        
+        private void textBoxCCCD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxSoDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
