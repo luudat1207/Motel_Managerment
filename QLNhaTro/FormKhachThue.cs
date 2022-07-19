@@ -98,7 +98,7 @@ namespace QLNhaTro
             buttonGhi.Enabled = !open;
             buttonKhongGhi.Enabled = !open;
 
-            textBoxTimKiem.ReadOnly = open;
+            textBoxTimKiem.ReadOnly = !open;
             textBoxCCCD.ReadOnly = open;
             textBoxHoTen.ReadOnly = open;
             textBoxSoDT.ReadOnly = open;

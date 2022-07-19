@@ -138,3 +138,4 @@ C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\ne
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormDichVu.resources
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormThanhToanHoaDon.resources
 C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormKhachThue.resources
+C:\Users\Luu Dat\OneDrive - NVC\Desktop\PE PRN211\QLNhaTro\QLNhaTro\obj\Debug\net5.0-windows\QLNhaTro.FormQuanLyPhongTro.resources

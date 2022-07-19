@@ -80,5 +80,12 @@ namespace QLNhaTro
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void thôngTinPhòngTrọToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormQuanLyPhongTro frm = new FormQuanLyPhongTro();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
