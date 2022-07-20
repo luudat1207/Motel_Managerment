@@ -68,36 +68,42 @@
             resources.ApplyResources(this.buttonKetThuc, "buttonKetThuc");
             this.buttonKetThuc.Name = "buttonKetThuc";
             this.buttonKetThuc.UseVisualStyleBackColor = true;
+            this.buttonKetThuc.Click += new System.EventHandler(this.buttonKetThuc_Click);
             // 
             // buttonKhongGhi
             // 
             resources.ApplyResources(this.buttonKhongGhi, "buttonKhongGhi");
             this.buttonKhongGhi.Name = "buttonKhongGhi";
             this.buttonKhongGhi.UseVisualStyleBackColor = true;
+            this.buttonKhongGhi.Click += new System.EventHandler(this.buttonKhongGhi_Click);
             // 
             // buttonGhi
             // 
             resources.ApplyResources(this.buttonGhi, "buttonGhi");
             this.buttonGhi.Name = "buttonGhi";
             this.buttonGhi.UseVisualStyleBackColor = true;
+            this.buttonGhi.Click += new System.EventHandler(this.buttonGhi_Click);
             // 
             // buttonXoa
             // 
             resources.ApplyResources(this.buttonXoa, "buttonXoa");
             this.buttonXoa.Name = "buttonXoa";
             this.buttonXoa.UseVisualStyleBackColor = true;
+            this.buttonXoa.Click += new System.EventHandler(this.buttonXoa_Click);
             // 
             // buttonCapNhat
             // 
             resources.ApplyResources(this.buttonCapNhat, "buttonCapNhat");
             this.buttonCapNhat.Name = "buttonCapNhat";
             this.buttonCapNhat.UseVisualStyleBackColor = true;
+            this.buttonCapNhat.Click += new System.EventHandler(this.buttonCapNhat_Click);
             // 
             // buttonThem
             // 
             resources.ApplyResources(this.buttonThem, "buttonThem");
             this.buttonThem.Name = "buttonThem";
             this.buttonThem.UseVisualStyleBackColor = true;
+            this.buttonThem.Click += new System.EventHandler(this.buttonThem_Click);
             // 
             // textBoxGhiChu
             // 
@@ -123,6 +129,7 @@
             // 
             resources.ApplyResources(this.textBoxGiaPhong, "textBoxGiaPhong");
             this.textBoxGiaPhong.Name = "textBoxGiaPhong";
+            this.textBoxGiaPhong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGiaPhong_KeyPress);
             // 
             // label5
             // 
