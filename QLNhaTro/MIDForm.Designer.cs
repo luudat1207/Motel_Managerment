@@ -185,6 +185,7 @@
             this.lậpHợpĐồngThuêNhàToolStripMenuItem.Name = "lậpHợpĐồngThuêNhàToolStripMenuItem";
             this.lậpHợpĐồngThuêNhàToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.lậpHợpĐồngThuêNhàToolStripMenuItem.Text = "Lập Hợp Đồng Thuê Nhà";
+            this.lậpHợpĐồngThuêNhàToolStripMenuItem.Click += new System.EventHandler(this.lậpHợpĐồngThuêNhàToolStripMenuItem_Click);
             // 
             // quảnLýHóaToolStripMenuItem
             // 
@@ -201,6 +202,7 @@
             this.lậpHóaĐơnThanhToánToolStripMenuItem.Name = "lậpHóaĐơnThanhToánToolStripMenuItem";
             this.lậpHóaĐơnThanhToánToolStripMenuItem.Size = new System.Drawing.Size(305, 26);
             this.lậpHóaĐơnThanhToánToolStripMenuItem.Text = "Lập Hóa Đơn Thanh Toán";
+            this.lậpHóaĐơnThanhToánToolStripMenuItem.Click += new System.EventHandler(this.lậpHóaĐơnThanhToánToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
