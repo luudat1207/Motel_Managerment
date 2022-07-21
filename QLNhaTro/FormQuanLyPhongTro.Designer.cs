@@ -254,7 +254,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxTimKiem);
             this.Controls.Add(this.label1);
-            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

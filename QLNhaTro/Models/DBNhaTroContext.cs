@@ -68,9 +68,7 @@ namespace QLNhaTro.Models
 
                 entity.Property(e => e.Idhd).HasColumnName("IDHD");
 
-                entity.Property(e => e.MaDv)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("MaDV");
+                entity.Property(e => e.MaDv).HasColumnName("MaDV");
 
                 entity.HasOne(d => d.IdhdNavigation)
                     .WithMany(p => p.Cthoadons)

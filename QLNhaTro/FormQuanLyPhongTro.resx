@@ -263,7 +263,7 @@
     <value>Times New Roman, 22.2pt</value>
   </data>
   <data name="textBoxGhiChu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 621</value>
+    <value>215, 693</value>
   </data>
   <data name="textBoxGhiChu.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -299,7 +299,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 621</value>
+    <value>13, 693</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -326,7 +326,7 @@
     <value>8</value>
   </data>
   <data name="textBoxThongTin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 22.2pt</value>
+    <value>Times New Roman, 18pt</value>
   </data>
   <data name="textBoxThongTin.Location" type="System.Drawing.Point, System.Drawing">
     <value>922, 545</value>
@@ -338,7 +338,7 @@
     <value>True</value>
   </data>
   <data name="textBoxThongTin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>918, 42</value>
+    <value>918, 140</value>
   </data>
   <data name="textBoxThongTin.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>

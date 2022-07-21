@@ -14,6 +14,7 @@ namespace QLNhaTro
     public partial class FormLapHopDong : Form
     {
         DataGridViewCellMouseEventArgs vtHopDong, vtTimKiem;
+
         public FormLapHopDong()
         {
             InitializeComponent();
