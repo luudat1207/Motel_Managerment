@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace QLNhaTro
     public partial class FormLapHopDong : Form
     {
         DataGridViewCellMouseEventArgs vtHopDong, vtTimKiem;
-
         public FormLapHopDong()
         {
             InitializeComponent();
@@ -342,13 +342,14 @@ namespace QLNhaTro
                 if (MessageBox.Show("Bạn có muốn thêm hợp đồng mới không?", " Thông báo",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return;
+                //DateTime hentra;
                 string sohd = textBoxSoHD.Text;
                 int idcn = int.Parse(textBoxIDCN.Text);
                 string cccd = textBoxCCCD.Text;
                 string maphong = textBoxPhong.Text;
                 double giathue = double.Parse(textBoxGiaThue.Text);
                 DateTime tungay = DateTime.Now;
-                DateTime hentra = DateTime.Parse(dateTimePickerDuKienTra.Text);
+                DateTime hentra = dateTimePickerDuKienTra.Value;
                 bool kt = false;
                 Hopdong hd = new Hopdong() { SoHopDong = sohd, Idcn = idcn, Cccd = cccd, MaPhong = maphong, GiaThue = giathue, TuNgay = tungay,DuKienTra = hentra, DaKetThuc = kt };
                 context.Hopdongs.Add(hd);
